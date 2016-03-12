@@ -1,26 +1,18 @@
 {
   "name": "dww510/phpliteadmin",
-  "type": "project",
+  "version": "1.9.6",
   "license": "GPL-3.0+",
   "description": "phpLiteAdmin is a web-based SQLite database admin tool written in PHP",
+  "keywords": [ "SQLite", "phpLiteAdmin", "composer", "sql", "php" ],
   "homepage": "https://github.com/dww510/phpLiteAdmin",
+  "support": {
+    "issues": "https://github.com/dww510/phpLiteAdmin/issues",
+    "source": "https://github.com/dww510/phpliteadmin"
+  },
   "authors": [
     {
       "name": "Damien Wright",
-      "email": "dww510@gmail.com",
-      "homepage": "https://github.com/dww510"
-    }
-  ],
-  "keywords": [
-    "SQLite", "phpLiteAdmin", "composer", "sql", "php"
-  ],
-  "support": {
-    "issues": "https://github.com/dww510/phpLiteAdmin/issues"
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/dww510/phpLiteAdmin"
+      "email": "dww510@gmail.com"
     }
   ],
   "require": {
