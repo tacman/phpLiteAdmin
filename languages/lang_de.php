@@ -2,7 +2,7 @@
 // German language file by Christopher Kramer (crazy4chrissi)
 // Read our wiki on how to translate: https://bitbucket.org/phpliteadmin/public/wiki/Localization
 // Version 1.9.6
-$lang = array(
+$lang = [
 	"direction" => "LTR",
 	"date_format" => '\a\m d.m.Y \u\m H:i:s (T)',
 	"ver" => "Version",
@@ -291,4 +291,4 @@ $lang = array(
 	"help8_x" => "Wenn Sie eine SQL-Datei exportieren, können Sie die Anfragen mit einer Transaktion umschließen, sodass falls ein Fehler beim Importieren der Datei auftritt, die Datenbank wieder zurück in ihren Ausgangszustand gebracht werden kann, sodass nicht nur Teile der importierten Daten in der Datenbank verbleiben.",
 	"help9" => "Füge Kommentare zu einer exportierten SQL-Datei hinzu",
 	"help9_x" => "Wenn Sie eine SQL-Datei exportieren, können Sie auswählen, dass in die SQL-Datei Kommentare eingefügt werden, welche die einzelnen Abschnitte der Datei erklären, sodass ein Mensch den Inhalt der Datei besser nachvollziehen kann."
-);
+];

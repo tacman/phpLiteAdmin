@@ -9,21 +9,21 @@ class Resources {
 	// currently unused in split mode; set to __FILE__ for built PLA.
 	public static $embedding_file = __FILE__;
 
-	private static $_resources = array(
-		'css' => array(
+	private static $_resources = [
+		'css' => [
 			'mime' => 'text/css',
 			'data' => 'resources/phpliteadmin.css',
-		),
-		'javascript' => array(
+		],
+		'javascript' => [
 			'mime' => 'text/javascript',
 			'data' => 'resources/phpliteadmin.js',
-		),
-		'favicon' => array(
+		],
+		'favicon' => [
 			'mime' => 'image/x-icon',
 			'data' => 'resources/favicon.ico',
 			'base64' => 'true',
-		),
-	);
+		],
+	];
 
 	// outputs the specified resource, if defined in this class.
 	// the main script should do no further output after calling this function.

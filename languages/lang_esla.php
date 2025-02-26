@@ -3,7 +3,7 @@
 // Traducido por Leandro G. Ortega - SuperBalgas - leandro@g-ortega.com.ar
 // Idioma: Español Latino Americano - Argentina
 
-$lang = array(
+$lang = [
 	// Agregado para la version 1.9.5
 	"no" => "No",
 	"none" => "ninguno",
@@ -287,5 +287,5 @@ $lang = array(
 	"help9" => "Agregar Comentarios a Archivo SQL Exportado",
 	"help9_x" => "Durante el proceso para exportar a un archivo SQL, puede optar por incluir comentarios que explican cada paso del proceso para que un ser humano puede entender mejor lo que est&aacute; sucediendo."
 	
-	);
+	];
 ?>

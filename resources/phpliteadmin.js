@@ -128,39 +128,39 @@ function disableText(checker, textie)
 	if(checker.checked)
 	{
 		document.getElementById(textie).value = "";
-		document.getElementById(textie).disabled = true;	
+		document.getElementById(textie).disabled = true;
 	}
 	else
 	{
-		document.getElementById(textie).disabled = false;	
+		document.getElementById(textie).disabled = false;
 	}
 }
 
 function toggleExports(val)
 {
-	document.getElementById("exportoptions_sql").style.display = "none";	
-	document.getElementById("exportoptions_csv").style.display = "none";	
-	
-	document.getElementById("exportoptions_"+val).style.display = "block";	
+	document.getElementById("exportoptions_sql").style.display = "none";
+	document.getElementById("exportoptions_csv").style.display = "none";
+
+	document.getElementById("exportoptions_"+val).style.display = "block";
 }
 
 function toggleImports(val)
 {
-	document.getElementById("importoptions_sql").style.display = "none";	
-	document.getElementById("importoptions_csv").style.display = "none";	
-	
-	document.getElementById("importoptions_"+val).style.display = "block";	
+	document.getElementById("importoptions_sql").style.display = "none";
+	document.getElementById("importoptions_csv").style.display = "none";
+
+	document.getElementById("importoptions_"+val).style.display = "block";
 }
 
 function openHelp(section)
 {
-	PopupCenter('?help=1#'+section, "Help Section");	
+	PopupCenter('?help=1#'+section, "Help Section");
 }
 var helpsec = false;
 function PopupCenter(pageURL, title)
 {
 	helpsec = window.open(pageURL, title, "toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width=400,height=300");
-} 
+}
 function checkLike(srchField, selOpt)
 {
 	if(selOpt=="LIKE%"){
@@ -192,6 +192,7 @@ function createCORSRequest(method, url)
 //check for updates
 function checkVersion(installed, url)
 {
+	return false;
 	var xhr = createCORSRequest('GET', url);
 	if (!xhr)
 		return false;

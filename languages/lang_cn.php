@@ -1,7 +1,7 @@
 <?php
 // Chinese language-texts for phpLiteAdmin
 // Read our wiki on how to translate: https://bitbucket.org/phpliteadmin/public/wiki/Localization
-$lang = array(
+$lang = [
 	"direction" => "LTR",
 	"date_format" => 'Y/m/d H:i:s',  // see http://php.net/manual/en/function.date.php for what the letters stand for
 	"ver" => "版本",
@@ -284,5 +284,5 @@ $lang = array(
 	"help9" => "Add Comments to Exported SQL File",
 	"help9_x" => "During the process for exporting to an SQL file, you may choose to include comments that explain each step of the process so that a human can better understand what is happening."
 	
-	);
+	];
 ?>

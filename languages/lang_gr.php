@@ -1,7 +1,7 @@
 <?php
 // Greek translation by Vergerakis Panagiotis
 // Read our wiki on how to translate: https://bitbucket.org/phpliteadmin/public/wiki/Localization
-$lang = array(
+$lang = [
 	"direction" => "LTR",
 	"date_format" => 'g:ia \o\n F j, Y (T)',  // see http://php.net/manual/en/function.date.php for what the letters stand for
 	"ver" => "έκδοση",
@@ -283,4 +283,4 @@ $lang = array(
 	"help9" => "Add Comments to Exported SQL File",
 	"help9_x" => "During the process for exporting to an SQL file, you may choose to include comments that explain each step of the process so that a human can better understand what is happening."
 
-);
+];

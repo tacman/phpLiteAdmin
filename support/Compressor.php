@@ -29,16 +29,11 @@ class Minify_CSS_Compressor {
      * 
      * @return string
      */
-    public static function process($css, $options = array())
+    public static function process($css, $options = [])
     {
         $obj = new Minify_CSS_Compressor($options);
         return $obj->_process($css);
     }
-    
-    /**
-     * @var array
-     */
-    protected $_options = null;
     
     /**
      * Are we "in" a hack? I.e. are some browsers targetted until the next comment?
@@ -50,11 +45,11 @@ class Minify_CSS_Compressor {
     
     /**
      * Constructor
-     * 
-     * @param array $options (currently ignored)
+     *
+     * @param array $_options (currently ignored)
      */
-    private function __construct($options) {
-        $this->_options = $options;
+    private function __construct(protected $_options)
+    {
     }
     
     /**
@@ -74,19 +69,19 @@ class Minify_CSS_Compressor {
         
         // preserve empty comment between property and value
         // http://css-discuss.incutio.com/?page=BoxModelHack
-        $css = preg_replace('@/\\*\\s*\\*/\\s*:@', '/*keep*/:', $css);
-        $css = preg_replace('@:\\s*/\\*\\s*\\*/@', ':/*keep*/', $css);
+        $css = preg_replace('@/\\*\\s*\\*/\\s*:@', '/*keep*/:', (string) $css);
+        $css = preg_replace('@:\\s*/\\*\\s*\\*/@', ':/*keep*/', (string) $css);
         
         // apply callback to all valid comments (and strip out surrounding ws
         $css = preg_replace_callback('@\\s*/\\*([\\s\\S]*?)\\*/\\s*@'
-            ,array($this, '_commentCB'), $css);
+            ,[$this, '_commentCB'], (string) $css);
 
         // remove ws around { } and last semicolon in declaration block
-        $css = preg_replace('/\\s*{\\s*/', '{', $css);
-        $css = preg_replace('/;?\\s*}\\s*/', '}', $css);
+        $css = preg_replace('/\\s*{\\s*/', '{', (string) $css);
+        $css = preg_replace('/;?\\s*}\\s*/', '}', (string) $css);
         
         // remove ws surrounding semicolons
-        $css = preg_replace('/\\s*;\\s*/', ';', $css);
+        $css = preg_replace('/\\s*;\\s*/', ';', (string) $css);
         
         // remove ws around urls
         $css = preg_replace('/
@@ -95,7 +90,7 @@ class Minify_CSS_Compressor {
                 ([^\\)]+?)  # 1 = the URL (really just a bunch of non right parenthesis)
                 \\s*
                 \\)         # )
-            /x', 'url($1)', $css);
+            /x', 'url($1)', (string) $css);
         
         // remove ws between rules and colons
         $css = preg_replace('/
@@ -107,7 +102,7 @@ class Minify_CSS_Compressor {
                 :
                 \\s*
                 (\\b|[#\'"-])        # 3 = first character of a value
-            /x', '$1$2:$3', $css);
+            /x', '$1$2:$3', (string) $css);
         
         // remove ws in selectors
         $css = preg_replace_callback('/
@@ -121,35 +116,35 @@ class Minify_CSS_Compressor {
                 [^~>+,\\s]+      # selector part
                 {                # open declaration block
             /x'
-            ,array($this, '_selectorsCB'), $css);
+            ,[$this, '_selectorsCB'], (string) $css);
         
         // minimize hex colors
         $css = preg_replace('/([^=])#([a-f\\d])\\2([a-f\\d])\\3([a-f\\d])\\4([\\s;\\}])/i'
-            , '$1#$2$3$4$5', $css);
+            , '$1#$2$3$4$5', (string) $css);
         
         // remove spaces between font families
         $css = preg_replace_callback('/font-family:([^;}]+)([;}])/'
-            ,array($this, '_fontFamilyCB'), $css);
+            ,[$this, '_fontFamilyCB'], (string) $css);
         
-        $css = preg_replace('/@import\\s+url/', '@import url', $css);
+        $css = preg_replace('/@import\\s+url/', '@import url', (string) $css);
         
         // replace any ws involving newlines with a single newline
-        $css = preg_replace('/[ \\t]*\\n+\\s*/', "\n", $css);
+        $css = preg_replace('/[ \\t]*\\n+\\s*/', "\n", (string) $css);
         
         // separate common descendent selectors w/ newlines (to limit line lengths)
-        $css = preg_replace('/([\\w#\\.\\*]+)\\s+([\\w#\\.\\*]+){/', "$1\n$2{", $css);
+        $css = preg_replace('/([\\w#\\.\\*]+)\\s+([\\w#\\.\\*]+){/', "$1\n$2{", (string) $css);
         
         // Use newline after 1st numeric value (to limit line lengths).
         $css = preg_replace('/
             ((?:padding|margin|border|outline):\\d+(?:px|em)?) # 1 = prop : 1st numeric value
             \\s+
             /x'
-            ,"$1\n", $css);
+            ,"$1\n", (string) $css);
         
         // prevent triggering IE6 bug: http://www.crankygeek.com/ie6pebug/
-        $css = preg_replace('/:first-l(etter|ine)\\{/', ':first-l$1 {', $css);
+        $css = preg_replace('/:first-l(etter|ine)\\{/', ':first-l$1 {', (string) $css);
             
-        return trim($css);
+        return trim((string) $css);
     }
     
     /**
@@ -162,7 +157,7 @@ class Minify_CSS_Compressor {
     protected function _selectorsCB($m)
     {
         // remove ws around the combinators
-        return preg_replace('/\\s*([,>+~])\\s*/', '$1', $m[0]);
+        return preg_replace('/\\s*([,>+~])\\s*/', '$1', (string) $m[0]);
     }
     
     /**
@@ -174,7 +169,7 @@ class Minify_CSS_Compressor {
      */
     protected function _commentCB($m)
     {
-        $hasSurroundingWs = (trim($m[0]) !== $m[1]);
+        $hasSurroundingWs = (trim((string) $m[0]) !== $m[1]);
         $m = $m[1]; 
         // $m is the comment content w/o the surrounding tokens, 
         // but the return value will replace the entire comment.
@@ -185,7 +180,7 @@ class Minify_CSS_Compressor {
             // component of http://tantek.com/CSS/Examples/midpass.html
             return '/*" "*/';
         }
-        if (preg_match('@";\\}\\s*\\}/\\*\\s+@', $m)) {
+        if (preg_match('@";\\}\\s*\\}/\\*\\s+@', (string) $m)) {
             // component of http://tantek.com/CSS/Examples/midpass.html
             return '/*";}}/* */';
         }
@@ -197,13 +192,13 @@ class Minify_CSS_Compressor {
                     (\\S[\\s\\S]+?)  # has at least some non-ws content
                     \\s*
                     /\\*             # ends like /*/ or /**/
-                @x', $m, $n)) {
+                @x', (string) $m, $n)) {
                 // end hack mode after this comment, but preserve the hack and comment content
                 $this->_inHack = false;
                 return "/*/{$n[1]}/**/";
             }
         }
-        if (substr($m, -1) === '\\') { // comment ends like \*/
+        if (str_ends_with((string) $m, '\\')) { // comment ends like \*/
             // begin hack mode and preserve hack
             $this->_inHack = true;
             return '/*\\*/';
@@ -235,12 +230,12 @@ class Minify_CSS_Compressor {
     protected function _fontFamilyCB($m)
     {
         // Issue 210: must not eliminate WS between words in unquoted families
-        $pieces = preg_split('/(\'[^\']+\'|"[^"]+")/', $m[1], null, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
+        $pieces = preg_split('/(\'[^\']+\'|"[^"]+")/', (string) $m[1], null, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
         $out = 'font-family:';
         while (null !== ($piece = array_shift($pieces))) {
             if ($piece[0] !== '"' && $piece[0] !== "'") {
-                $piece = preg_replace('/\\s+/', ' ', $piece);
-                $piece = preg_replace('/\\s?,\\s?/', ',', $piece);
+                $piece = preg_replace('/\\s+/', ' ', (string) $piece);
+                $piece = preg_replace('/\\s?,\\s?/', ',', (string) $piece);
             }
             $out .= $piece;
         }

@@ -41,12 +41,12 @@ class Authorization
 			if ($remember) {
 				// user wants to be remembered, so set a cookie
 				$expire = time()+60*60*24*30; //set expiration to 1 month from now
-				setcookie(COOKIENAME, $this->system_password_encrypted, $expire, null, null, null, true);
-				setcookie(COOKIENAME."_salt", $_SESSION[COOKIENAME.'_salt'], $expire, null, null, null, true);
+				setcookie(COOKIENAME, $this->system_password_encrypted, ['expires' => $expire, 'path' => null, 'domain' => null, 'secure' => null, 'httponly' => true]);
+				setcookie(COOKIENAME."_salt", (string) $_SESSION[COOKIENAME.'_salt'], ['expires' => $expire, 'path' => null, 'domain' => null, 'secure' => null, 'httponly' => true]);
 			} else {
 				// user does not want to be remembered, so destroy any potential cookies
-				setcookie(COOKIENAME, "", time()-86400, null, null, null, true);
-				setcookie(COOKIENAME."_salt", "", time()-86400, null, null, null, true);
+				setcookie(COOKIENAME, "", ['expires' => time()-86400, 'path' => null, 'domain' => null, 'secure' => null, 'httponly' => true]);
+				setcookie(COOKIENAME."_salt", "", ['expires' => time()-86400, 'path' => null, 'domain' => null, 'secure' => null, 'httponly' => true]);
 				unset($_COOKIE[COOKIENAME]);
 				unset($_COOKIE[COOKIENAME.'_salt']);
 			}
@@ -63,8 +63,8 @@ class Authorization
 	public function revoke()
 	{
 		//destroy everything - cookies and session vars
-		setcookie(COOKIENAME, "", time()-86400, null, null, null, true);
-		setcookie(COOKIENAME."_salt", "", time()-86400, null, null, null, true);
+		setcookie(COOKIENAME, "", ['expires' => time()-86400, 'path' => null, 'domain' => null, 'secure' => null, 'httponly' => true]);
+		setcookie(COOKIENAME."_salt", "", ['expires' => time()-86400, 'path' => null, 'domain' => null, 'secure' => null, 'httponly' => true]);
 		unset($_COOKIE[COOKIENAME]);
 		unset($_COOKIE[COOKIENAME.'_salt']);
 		session_unset();

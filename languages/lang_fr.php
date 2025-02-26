@@ -1,7 +1,7 @@
 <?php
 // French language-texts by Olivier Briat (nospam@briat.org)
 // Read our wiki on how to translate: https://bitbucket.org/phpliteadmin/public/wiki/Localization
-$lang = array(
+$lang = [
 	"direction" => "LTR",
 	"date_format" => '\à G\hi \l\e d/m/Y (T)',  // see http://php.net/manual/en/function.date.php for what the letters stand for
 	"ver" => "version",
@@ -280,5 +280,5 @@ $lang = array(
 	"help9" => "Ajout des commentaires au fichier d'export SQL",
 	"help9_x" => "Au cours du processus d'export vers un fichier SQL, vous pouvez faire le choix d'inclure des commentaires expliquant chaque étape de celui-ci, donnant ainsi une meilleur compréhension à un utilisateur de ce qui se passe."
 	
-	);
+	];
 ?>

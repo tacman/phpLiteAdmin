@@ -21,7 +21,8 @@
       }
   },
   "require": {
-    "php": "^8.4"
+    "php": "^8.4",
+    "symfony/error-handler": "^7.2"
   },
   "require-dev": {
     "rector/rector": "^2.0"

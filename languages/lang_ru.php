@@ -1,7 +1,7 @@
 <?php
 // Russian language file by Boris Kurshev (13dagger)
 // Read our wiki on how to translate: https://bitbucket.org/phpliteadmin/public/wiki/Localization
-$lang = array(
+$lang = [
 	"direction" => "LTR",
 	"date_format" => 'g:ia \o\n F j, Y (T)',  // see http://php.net/manual/en/function.date.php for what the letters stand for
 	"ver" => "версия",
@@ -284,5 +284,5 @@ $lang = array(
 	"help9" => "Добавление Комментариев в экспортируемый SQL Файл",
 	"help9_x" => "Во время процесса экспортирования в SQL файл, вы можете выбрать вставку комментариев, которые объясняют каждый шаг, помогая лучше понимать процесс человеку, читающему файл."
 	
-	);
+	];
 ?>

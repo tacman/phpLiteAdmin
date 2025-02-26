@@ -1,7 +1,7 @@
 <?php
 // Arabic language file by Ayman Teryaki (teryaki1963)
 // Read our wiki on how to translate: https://bitbucket.org/phpliteadmin/public/wiki/Localization
-$lang = array(
+$lang = [
 	"direction" => "RTL",
 	"date_format" => '\a\m d.m.Y \u\m H:i:s (T)',
 	"ver" => "رقم النسخة",
@@ -284,4 +284,4 @@ $lang = array(
 	"help8_x" => "During the process for exporting to an SQL file, you may choose to wrap the queries around a TRANSACTION so that if an error occurs at any time during the importation process using the exported file, the database can be reverted to its previous state, preventing partially updated data from populating the database.",
 	"help9" => "أضف التعليقات للملف المصدر",
 	"help9_x" => "During the process for exporting to an SQL file, you may choose to include comments that explain each step of the process so that a human can better understand what is happening."
-);
+];

@@ -1,6 +1,6 @@
 <?php
 // Brazilian Portuguese translation by Nicole Sigaud
-$lang = array(
+$lang = [
 	"direction" => "LTR",
 	"date_format" => 'd.m.Y, H:i:s (O T)',  // (formato brasileiro dd.mm.aaaa, hh:mm:ss) see http://php.net/manual/en/function.date.php for what the letters stand for
 	"ver" => "versão",
@@ -278,5 +278,5 @@ $lang = array(
 	"help9" => "Adicionar comentários para o arquivo SQL exportado",
 	"help9_x" => "Durante o processo de exportação para um arquivo SQL você pode optar por incluir comentários que expliquem cada passo do processo, fazendo com que uma pessoa possa entender melhor o que está acontecendo."
 	
-	);
+	];
 ?>

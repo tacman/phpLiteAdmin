@@ -2,7 +2,7 @@
 //	class MicroTimer (issue #146)
 //	wraps calls to microtime(), calculating the elapsed time and rounding output
 //
-class MicroTimer {
+class MicroTimer implements \Stringable {
 
 	private $startTime, $stopTime;
 
@@ -29,7 +29,7 @@ class MicroTimer {
 	}
 
 	// called when using a MicroTimer object as a string
-	public function __toString()
+	public function __toString(): string
 	{
 		return (string) $this->elapsed();
 	}

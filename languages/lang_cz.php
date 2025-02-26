@@ -1,7 +1,7 @@
 <?php
 // Czech translation by Jan Turoň
 // Read our wiki on how to translate: https://bitbucket.org/phpliteadmin/public/wiki/Localization
-$lang = array(
+$lang = [
 	"direction" => "LTR",
 	"date_format" => 'G:i \d\n\e j. n. Y (T)',  // see http://php.net/manual/en/function.date.php for what the letters stand for
 	"ver" => "verze",
@@ -281,5 +281,5 @@ $lang = array(
 	"help8_x" => "V dialogu exportu do SQL souboru lze zvolit obalení dotazů příkazem TRANSACTION, tedy pokud dojde při importu z exportovaného souboru kdykoliv k chybě, databáze bude vrácena do původního stavu, částečně aktualizovaná data se do databáze nezapíší.",
 	"help9" => "Přidání komentářů do exportovaného SQL souboru",
 	"help9_x" => "V dialogu exportu do SQL souboru lze zvolit vložení komentářů vysvětlujících každý krok procesu, aby člověk lépe porozuměl, co provádí."
-	);
+	];
 ?>

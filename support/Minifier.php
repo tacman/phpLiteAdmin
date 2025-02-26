@@ -108,7 +108,7 @@ class Minifier
 	 *
 	 * @var array
 	 */
-	static protected $defaultOptions = array('flaggedComments' => true);
+	static protected $defaultOptions = ['flaggedComments' => true];
 
 	/**
 	 * Contains a copy of the JShrink object used to run minification. This is
@@ -122,7 +122,7 @@ class Minifier
      * unneeded characters in order to shrink the code without altering it's
      * functionality.
 	 */
-	static public function minify($js, $options = array())
+	static public function minify($js, $options = [])
 	{
 		try{
 			ob_start();
@@ -193,7 +193,7 @@ class Minifier
 				case "\n":
 					// if the next line is something that can't stand alone
                     // preserve the newline
-					if(strpos('(-+{[@', $this->b) !== false)
+					if(str_contains('(-+{[@', $this->b))
 					{
 						echo $this->a;
 						$this->saveString();
@@ -217,7 +217,7 @@ class Minifier
 					switch($this->b)
 					{
 						case "\n":
-							if(strpos('}])+-"\'', $this->a) !== false)
+							if(str_contains('}])+-"\'', $this->a))
 							{
 								echo $this->a;
 								$this->saveString();
@@ -240,7 +240,7 @@ class Minifier
 							if($this->a == '/' && ($this->b == '\'' || $this->b == '"'))
 							{
 								$this->saveRegex();
-								continue;
+								break;
 							}
 
 							echo $this->a;
@@ -252,7 +252,7 @@ class Minifier
 			// do reg check of doom
 			$this->b = $this->getReal();
 
-			if(($this->b == '/' && strpos('(,=:[!&|?', $this->a) !== false))
+			if(($this->b == '/' && str_contains('(,=:[!&|?', $this->a)))
 				$this->saveRegex();
 		}
 		$this->clean();
@@ -332,7 +332,7 @@ class Minifier
 					// we're gonna back up a bit and and send the comment back,
                     // where the first char will be echoed and the rest will be
                     // treated like a string
-					$this->index = $this->index-2;
+					$this->index -= 2;
 					return '/';
 
 				}elseif($this->getNext('*/')){
@@ -373,7 +373,7 @@ class Minifier
 	 */
 	protected function getNext($string)
 	{
-		$pos = strpos($this->input, $string, $this->index);
+		$pos = strpos($this->input, (string) $string, $this->index);
 
 		if($pos === false)
 			return false;
@@ -464,7 +464,7 @@ class Minifier
 	 */
 	static protected function isAlphaNumeric($char)
 	{
-		return preg_match('/^[\w\$]$/', $char) === 1 || $char == '/';
+		return preg_match('/^[\w\$]$/', (string) $char) === 1 || $char == '/';
 	}
 
 }

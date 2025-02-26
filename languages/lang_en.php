@@ -5,7 +5,7 @@
 // This file is only meant as a basis for you to do your own translation!
 # END REMOVE_FROM_BUILD
 // Read our wiki on how to translate: https://bitbucket.org/phpliteadmin/public/wiki/Localization
-$lang = array(
+$lang = [
 	"direction" => "LTR",
 	"date_format" => 'g:ia \o\n F j, Y (T)',  // see http://php.net/manual/en/function.date.php for what the letters stand for
 	"ver" => "version",
@@ -295,4 +295,4 @@ $lang = array(
 	"help10" => "Partial Indexes",
 	"help10_x" => "Partial indexes are indexes over a subset of the rows of a table specified by a WHERE clause. Note this requires at least SQLite 3.8.0 and database files with partial indexes won't be readable or writable by older versions. See the <a href='https://www.sqlite.org/partialindex.html' target='_blank'>SQLite documentation.</a>"
 
-);
+];
