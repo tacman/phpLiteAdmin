@@ -20,16 +20,16 @@ $subdirectories = false;
 
 //if the above $directory variable is set to false, you must specify the databases manually in an array as the next variable
 //if any of the databases do not exist as they are referenced by their path, they will be created automatically
-$databases = array(
-	array(
+$databases = [
+	[
 		'path'=> 'database1.sqlite',
 		'name'=> 'Database 1'
-	),
-	array(
+	],
+	[
 		'path'=> 'database2.sqlite',
 		'name'=> 'Database 2'
-	),
-);
+	],
+];
 
 
 /* ---- Interface settings ---- */
@@ -54,11 +54,11 @@ $maxSavedQueries = 10;
 
 //a list of custom functions that can be applied to columns in the databases
 //make sure to define every function below if it is not a core PHP function
-$custom_functions = array(
+$custom_functions = [
 	'md5', 'sha1', 'time', 'strtotime',
 	// add the names of your custom functions to this array
 	/* 'leet_text', */
-);
+];
 
 // define your custom functions here
 /*
@@ -78,5 +78,5 @@ $cookie_name = 'pla3412';
 $debug = false;
 
 // the user is allowed to create databases with only these extensions
-$allowed_extensions = array('db','db3','sqlite','sqlite3');
+$allowed_extensions = ['db','db3','sqlite','sqlite3'];
 

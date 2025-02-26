@@ -35,14 +35,14 @@ $inputfile  = 'phpliteadmin-build-template.php';
 $outputfile = 'phpliteadmin.php';
 
 // === identifiers recognized in EXPORT and ###something### directives ===
-$build_data = array(
+$build_data = [
 	// used for resource embedding
-	'resources' => array(),
+	'resources' => [],
 	'resourcesize' => 0,
 	// custom variables
 	'build_date' => date('Y-m-d'),
 	'build_year' => date('Y'),
-);
+];
 
 ?>
 <!doctype html>
@@ -75,24 +75,24 @@ echo "</ol>";
 
 // parse INCLUDE
 echo "<li>Including files<ol>";
-$output = preg_replace_callback('@^#\s*INCLUDE\s+(?P<pattern>\S+)\s*(?P<filters>(\|\s*\w+\s*)+|)$@m', 'replace_include', $output);
+$output = preg_replace_callback('@^#\s*INCLUDE\s+(?P<pattern>\S+)\s*(?P<filters>(\|\s*\w+\s*)+|)$@m', 'replace_include', (string) $output);
 echo "</ol>";
 
 // parse EXPORT
 echo "<li>Replacing variables<ol>";
-$output = preg_replace_callback('@^(?P<indent>\s*)#\s*EXPORT\s+\$?(?P<identifier>\w+)\s*$@m', 'replace_export', $output);
+$output = preg_replace_callback('@^(?P<indent>\s*)#\s*EXPORT\s+\$?(?P<identifier>\w+)\s*$@m', 'replace_export', (string) $output);
 
 // parse ###identifier###
-$output = preg_replace_callback('@###(?P<identifier>\w+)###@', 'replace_value', $output);
+$output = preg_replace_callback('@###(?P<identifier>\w+)###@', 'replace_value', (string) $output);
 echo "</ol>";
 
 // parse REMOVE_FROM_BUILD
 echo "<li>Removing ignored code";
-$output = preg_replace('@(\r?\n?)^#\s*REMOVE_FROM_BUILD.*?^#\s*END\s+REMOVE_FROM_BUILD\s*$@ms', '', $output);
+$output = preg_replace('@(\r?\n?)^#\s*REMOVE_FROM_BUILD.*?^#\s*END\s+REMOVE_FROM_BUILD\s*$@ms', '', (string) $output);
 
 // remove other comments starting with '#'
 echo "<li>Removing build comments";
-$output = preg_replace('@(\r?\n)^#.*\r?\n?$@m', '', $output);
+$output = preg_replace('@(\r?\n)^#.*\r?\n?$@m', '', (string) $output);
 
 // save result script to file
 echo "<li>Saving code to <span>{$outputfile}</span>";
@@ -119,7 +119,7 @@ function minify_js($js)
 
 function comment_lines($text)
 {
-	return preg_replace('/^/m', "//\t", $text);
+	return preg_replace('/^/m', "//\t", (string) $text);
 }
 
 
@@ -128,9 +128,9 @@ function comment_lines($text)
 function replace_include($m)
 {
 	if ($m['filters']) {
-		$filters = array_map('trim', preg_split('@\s*\|\s*@', trim($m['filters'], ' |')));
+		$filters = array_map('trim', preg_split('@\s*\|\s*@', trim((string) $m['filters'], ' |')));
 	} else {
-		$filters = array();
+		$filters = [];
 	}
 
 	$source = '';
@@ -162,9 +162,9 @@ function replace_include($m)
 function replace_embed($m)
 {
 	if ($m['filters']) {
-		$filters = array_map('trim', preg_split('@\s*\|\s*@', trim($m['filters'], ' |')));
+		$filters = array_map('trim', preg_split('@\s*\|\s*@', trim((string) $m['filters'], ' |')));
 	} else {
-		$filters = array();
+		$filters = [];
 	}
 
 	$result = '';
@@ -187,8 +187,8 @@ function replace_embed($m)
 				$result .= $data;
 
 				// evaluate size and position relative to __COMPILER_HALT_OFFSET__
-				$size = strlen($data);
-				$build_data['resources'][$filename] = array($build_data['resourcesize'], $size);
+				$size = strlen((string) $data);
+				$build_data['resources'][$filename] = [$build_data['resourcesize'], $size];
 				$build_data['resourcesize'] += $size;
 			} else {
 				echo "<li class='warn'><span>{$filename}</span> - cannot read file";

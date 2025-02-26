@@ -1,0 +1,62 @@
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+google-api-credentials.json
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+.php_cs.cache
+.idea
+/.yarn*
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+/public/coverage
+./build/coverage-behat
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
+
+/public/images/excel
+/public/images/uploads
+
+/pixie
+/data
+
+composer.phar
+locations.db
+######### docker data ignore ###############
+.docker/meili/
+.docker/rabbitmq/log/
+.docker/rabbitmq/data/
+.docker/redis/
+.docker/services/postgres16
+.docker
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor
+###< symfony/asset-mapper ###
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
+
+# this is created upon deployment
+public/js/fos_js_routes.js
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
